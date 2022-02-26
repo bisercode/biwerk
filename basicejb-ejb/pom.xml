@@ -42,6 +42,15 @@
             <artifactId>log4j</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- REST dependency -->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
