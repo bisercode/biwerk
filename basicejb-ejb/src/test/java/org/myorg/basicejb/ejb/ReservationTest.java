@@ -16,7 +16,7 @@ public class ReservationTest {
 
     @Test
     public void testPing() {
-        logger.info("*** testPing2 ***");
+        logger.info("*** testPing ***");
         reservatist.ping();
     }
 }
