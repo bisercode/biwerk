@@ -18,6 +18,7 @@
         <module>basicejb-ejb</module>
         <module>basicejb-ear</module>
         <module>basicejb-rest</module>
+      <!--  <module>basicejb-test</module> -->
     </modules>
 
     <properties>
@@ -37,6 +38,14 @@
         <jboss.mgmt.host>${jboss.host}</jboss.mgmt.host>
         <jboss.mgmt.port>9990</jboss.mgmt.port>
         <ejava.version>4.0.0-SNAPSHOT</ejava.version>
+
+        <jboss.host>localhost</jboss.host>
+        <jboss.http.port>8080</jboss.http.port>
+        <jndi.user>admin</jndi.user>
+        <jndi.password>admin</jndi.password>
+        <jboss.remoting.java.naming.factory.initial>org.jboss.naming.remote.client.InitialContextFactory</jboss.remoting.java.naming.factory.initial>
+        <jboss.remoting.java.naming.provider.url>http-remoting://${jboss.host}:${jboss.http.port}</jboss.remoting.java.naming.provider.url>
+        <jboss.remoting.java.naming.factory.url.pkgs/>
     </properties>
 
     <repositories>

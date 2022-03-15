@@ -37,15 +37,40 @@
             <artifactId>log4j</artifactId>
             <scope>test</scope>
         </dependency>
-       <!-- RMI Client dependency -->
+       <!-- RMI Client dependency Original
         <dependency>
             <groupId>info.ejava.examples.common</groupId>
             <artifactId>jboss-rmi-client</artifactId>
             <type>pom</type>
             <scope>test</scope>
         </dependency>
+        -->
+        <!-- RMI Client dependency JEE Schulung -->
+        <dependency>
+            <groupId>org.wildfly</groupId>
+            <artifactId>wildfly-ejb-client-bom</artifactId>
+            <version>11.0.0.Final</version>
+            <type>pom</type>
+        </dependency>
     </dependencies>
     <build>
+        <!-- filter test/resource files for profile-specific valies -->
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*.properties</include>
+                </includes>
+            </testResource>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>**/*.properties</exclude>
+                </excludes>
+            </testResource>
+        </testResources>
         <plugins>
         </plugins>
     </build>
