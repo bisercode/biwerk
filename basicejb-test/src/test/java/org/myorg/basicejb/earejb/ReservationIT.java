@@ -17,6 +17,9 @@ public class ReservationIT {
         logger.debug("getting jndi initial context");
         jndi = new InitialContext();
         logger.debug("jndi={}", jndi.getEnvironment());
+      //  jndi.lookup("jms");
+
+      //  jndi.lookup("/basicejb-ejb-1.0-SNAPSHOT/ReservationEJB!org.myorg.basicejb.ejb.ReservationRemote");
     }
 
     @Test
