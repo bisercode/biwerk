@@ -18,7 +18,7 @@
         <module>basicejb-ejb</module>
         <module>basicejb-ear</module>
         <module>basicejb-rest</module>
-      <!--  <module>basicejb-test</module> -->
+        <module>basicejb-test</module>
     </modules>
 
     <properties>
@@ -46,6 +46,12 @@
         <jboss.remoting.java.naming.factory.initial>org.wildfly.naming.client.WildFlyInitialContextFactory</jboss.remoting.java.naming.factory.initial>
         <jboss.remoting.java.naming.provider.url>http-remoting://${jboss.host}:${jboss.http.port}</jboss.remoting.java.naming.provider.url>
         <jboss.remoting.java.naming.factory.url.pkgs/>
+
+        <wildfly.version>8.1.0.Final</wildfly.version>
+        <cargo-maven2-plugin.version>1.4.3</cargo-maven2-plugin.version>
+        <cargo.containerId>wildfly8x</cargo.containerId>
+        <jboss.mgmt.host>${jboss.host}</jboss.mgmt.host>
+        <jboss.mgmt.port>9990</jboss.mgmt.port>
 
         <maven-failsafe-plugin.version>2.17</maven-failsafe-plugin.version>
     </properties>
@@ -188,6 +194,50 @@
                             <goals>
                                 <goal>integration-test</goal>
                                 <goal>verify</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.cargo</groupId>
+                    <artifactId>cargo-maven2-plugin</artifactId>
+                    <version>${cargo-maven2-plugin.version}</version>
+                    <configuration>
+                        <container>
+                            <containerId>${cargo.containerId}</containerId>
+                            <type>remote</type>
+                            <log>target/server.log</log>
+                            <output>target/output.log</output>
+                        </container>
+                        <configuration>
+                            <type>runtime</type>
+                            <properties>
+                                <cargo.hostname>${jboss.mgmt.host}</cargo.hostname>
+                                <cargo.jboss.management.port>${jboss.mgmt.port}</cargo.jboss.management.port>
+                            </properties>
+                        </configuration>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.wildfly</groupId>
+                            <artifactId>wildfly-controller-client</artifactId>
+                            <version>${wildfly.version}</version>
+                        </dependency>
+                    </dependencies>
+                    <executions>
+                        <execution>
+                            <id>cargo-prep</id>
+                            <phase>pre-integration-test</phase>
+                            <goals>
+                                <goal>redeploy</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>cargo-post</id>
+                            <phase>post-integration-test</phase>
+                            <goals>
+                                <goal>undeploy</goal>
                             </goals>
                         </execution>
                     </executions>

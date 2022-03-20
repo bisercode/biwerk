@@ -52,6 +52,15 @@
             <version>11.0.0.Final</version>
             <type>pom</type>
         </dependency>
+
+        <!-- cargo requires scope=compile dependencies on deployables -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>basicejb-ear</artifactId>
+            <type>ear</type>
+            <version>${project.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -78,6 +87,21 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
+            </plugin>
+
+            <!-- artifacts to deploy to server -->
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <configuration>
+                    <deployables>
+                        <deployable>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>basicejb-ear</artifactId>
+                            <type>ear</type>
+                        </deployable>
+                    </deployables>
+                </configuration>
             </plugin>
         </plugins>
 
