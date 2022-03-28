@@ -1,11 +1,11 @@
 package org.myorg.basicejb.ejb;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Stateless
 public class ReservationEJB implements ReservationLocal, ReservationRemote {
@@ -24,5 +24,11 @@ public class ReservationEJB implements ReservationLocal, ReservationRemote {
     @Override
     public void ping() {
         logger.debug("ping called");
+        businessMethod();
+    }
+
+    @Override
+    public void businessMethod() {
+        logger.debug("businessMethod called");
     }
 }

@@ -98,10 +98,8 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <configuration>
                     <systemPropertyVariables>
-                        <jndi.name.reservation>basicejb-ear-${project.version}/basicejb-ejb-${project.version}/
-                            ReservationEJB!org.myorg.basicejb.ejb.ReservationRemote</jndi.name.reservation>
-                        <jndi.name.mysingelton>basicejb-ear-${project.version}/basicejb-ejb-${project.version}/
-                            MySingeltonImpl!org.myorg.basicejb.ejb.MySingeltonInterface</jndi.name.mysingelton>
+                        <jndi.name.reservation>basicejb-ear-${project.version}/basicejb-ejb-${project.version}/ReservationEJB!org.myorg.basicejb.ejb.ReservationRemote</jndi.name.reservation>
+                        <jndi.name.mysingelton>basicejb-ear-${project.version}/basicejb-ejb-${project.version}/MySingeltonImpl!org.myorg.basicejb.ejb.MySingeltonInterface</jndi.name.mysingelton>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
