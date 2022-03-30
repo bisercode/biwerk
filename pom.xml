@@ -46,6 +46,10 @@
         <jboss.remoting.java.naming.provider.url>http-remoting://${jboss.host}:${jboss.http.port}</jboss.remoting.java.naming.provider.url>
         <jboss.remoting.java.naming.factory.url.pkgs/>
 
+        <jboss.remoting.port>${jboss.http.port}</jboss.remoting.port>
+        <jboss.naming.port>${jboss.remoting.port}</jboss.naming.port>
+        <jboss.ejbclient.java.naming.factory.url.pkgs>org.jboss.ejb.client.naming</jboss.ejbclient.java.naming.factory.url.pkgs>
+
         <wildfly.version>8.1.0.Final</wildfly.version>
         <cargo-maven2-plugin.version>1.4.3</cargo-maven2-plugin.version>
         <cargo.containerId>wildfly8x</cargo.containerId>
