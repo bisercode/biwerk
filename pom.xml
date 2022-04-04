@@ -57,6 +57,7 @@
         <jboss.mgmt.port>9990</jboss.mgmt.port>
 
         <maven-failsafe-plugin.version>2.17</maven-failsafe-plugin.version>
+        <maven-war-plugin.version>2.4</maven-war-plugin.version>
     </properties>
 
     <repositories>
@@ -201,6 +202,16 @@
                         </execution>
                     </executions>
                 </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${maven-war-plugin.version}</version>
+                    <configuration>
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+                    </configuration>
+                </plugin>
+
             </plugins>
         </pluginManagement>
     </build>

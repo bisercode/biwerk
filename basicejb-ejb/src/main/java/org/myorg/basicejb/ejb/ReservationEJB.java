@@ -31,4 +31,9 @@ public class ReservationEJB implements ReservationLocal, ReservationRemote {
     public void businessMethod() {
         logger.debug("businessMethod called");
     }
+
+    @Override
+    public void pingLocal() {
+        logger.debug("ping local called");
+    }
 }

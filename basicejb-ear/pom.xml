@@ -30,6 +30,21 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!-- REST module added into EAR -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>basicejb-rest</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+            <exclusions>
+                <!-- server doesn't want to see already provided jars -->
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 
 </project>
